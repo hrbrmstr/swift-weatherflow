@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		01AAFE8D27A44F1200C23A67 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01AAFE8C27A44F1200C23A67 /* main.swift */; };
+		01AAFE9627A4507400C23A67 /* shim.c in Sources */ = {isa = PBXBuildFile; fileRef = 01AAFE9527A4507400C23A67 /* shim.c */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -25,6 +26,9 @@
 /* Begin PBXFileReference section */
 		01AAFE8927A44F1200C23A67 /* swift-weatherflow */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "swift-weatherflow"; sourceTree = BUILT_PRODUCTS_DIR; };
 		01AAFE8C27A44F1200C23A67 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
+		01AAFE9327A4507300C23A67 /* swift-weatherflow-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "swift-weatherflow-Bridging-Header.h"; sourceTree = "<group>"; };
+		01AAFE9427A4507400C23A67 /* shim.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = shim.h; sourceTree = "<group>"; };
+		01AAFE9527A4507400C23A67 /* shim.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = shim.c; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +62,9 @@
 			isa = PBXGroup;
 			children = (
 				01AAFE8C27A44F1200C23A67 /* main.swift */,
+				01AAFE9427A4507400C23A67 /* shim.h */,
+				01AAFE9527A4507400C23A67 /* shim.c */,
+				01AAFE9327A4507300C23A67 /* swift-weatherflow-Bridging-Header.h */,
 			);
 			path = "swift-weatherflow";
 			sourceTree = "<group>";
@@ -94,6 +101,7 @@
 				TargetAttributes = {
 					01AAFE8827A44F1200C23A67 = {
 						CreatedOnToolsVersion = 13.2.1;
+						LastSwiftMigration = 1320;
 					};
 				};
 			};
@@ -120,6 +128,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				01AAFE9627A4507400C23A67 /* shim.c in Sources */,
 				01AAFE8D27A44F1200C23A67 /* main.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -245,10 +254,18 @@
 		01AAFE9127A44F1200C23A67 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = CBY22P58G8;
 				ENABLE_HARDENED_RUNTIME = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "swift-weatherflow/swift-weatherflow-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
@@ -256,10 +273,17 @@
 		01AAFE9227A44F1200C23A67 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = CBY22P58G8;
 				ENABLE_HARDENED_RUNTIME = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "swift-weatherflow/swift-weatherflow-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 			};
 			name = Release;
